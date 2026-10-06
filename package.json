@@ -1,0 +1,43 @@
+{
+  "name": "sacco-platform",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Hosted SACCO management platform for Mbarara City Mukama Nuwamanya People's SACCO — subscriptions, USSD, and public APIs.",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit",
+    "test": "node --import tsx --test src/lib/*.test.ts",
+    "test:db": "node --env-file-if-exists=.env --import tsx --test test/*.test.ts",
+    "db:install-embedded": "npm install --no-save --no-fund --no-audit embedded-postgres@16.14.0-beta.17",
+    "db:start": "node --import tsx db/dev-db.ts start",
+    "db:stop": "node --import tsx db/dev-db.ts stop",
+    "db:migrate": "node --env-file-if-exists=.env --import tsx db/migrate.ts",
+    "db:seed": "node --env-file-if-exists=.env --import tsx db/seed.ts",
+    "db:migrate:prod": "node --import tsx db/migrate.ts",
+    "deploy:check": "npm run typecheck && npm run test && npm run build"
+  },
+  "dependencies": {
+    "bcryptjs": "2.4.3",
+    "jose": "5.9.6",
+    "next": "^15.5.27",
+    "pg": "8.13.1",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "zod": "3.24.1"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "2.4.6",
+    "@types/node": "22.10.7",
+    "@types/pg": "8.11.10",
+    "@types/react": "19.0.7",
+    "@types/react-dom": "19.0.3",
+    "tsx": "4.19.2",
+    "typescript": "5.7.3"
+  }
+}

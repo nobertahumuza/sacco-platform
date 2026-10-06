@@ -1,0 +1,24 @@
+# Dependencies and build output
+node_modules/
+.next/
+out/
+build/
+
+# Secrets — never commit. Only .env.example belongs in git.
+.env
+.env.local
+.env*.local
+*.log
+
+# Local Postgres data directory (db/dev-db.ts). Contains real seeded data.
+.pgdata/
+
+# Vercel
+.vercel/
+
+# TypeScript incremental cache
+tsconfig.tsbuildinfo
+next-env.d.ts
+
+# Uploaded evidence, if the deposit-slip endpoint is ever enabled
+proof-of-payments/

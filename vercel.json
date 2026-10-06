@@ -1,0 +1,13 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "crons": [
+    {
+      "path": "/api/internal/cron/subscriptions",
+      "schedule": "17 6 * * *"
+    }
+  ],
+  "github": {
+    "enabled": true,
+    "autoJobQueue": true
+  }
+}

@@ -1,0 +1,23 @@
+# Local development database only.
+# Production must use a managed Postgres with point-in-time recovery.
+# See README, "Hosting".
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: empires
+      POSTGRES_PASSWORD: sacco
+      POSTGRES_DB: empires_connect
+    ports:
+      - "5432:5432"
+    volumes:
+      - empires_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U empires -d empires_connect"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  empires_pgdata:
